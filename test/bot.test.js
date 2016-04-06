@@ -65,6 +65,28 @@ describe('Bot', function() {
     DiscordStub.prototype.sendMessage.should.not.have.been.called;
   });
 
+  it('should not color irc messages if the option is disabled', function() {
+    const text = 'testmessage';
+    const newConfig = { ...config, ircNickColor: false };
+    const bot = new Bot(newConfig);
+    bot.connect();
+    const message = {
+      content: text,
+      mentions: [],
+      channel: {
+        name: 'discord'
+      },
+      author: {
+        username: 'otherauthor',
+        id: 'not bot id'
+      }
+    };
+
+    bot.sendToIRC(message);
+    const expected = `<${message.author.username}> ${text}`;
+    ClientStub.prototype.say.should.have.been.calledWith('#irc', expected);
+  });
+
   it('should send correct messages to irc', function() {
     const text = 'testmessage';
     const message = {
@@ -200,7 +222,7 @@ describe('Bot', function() {
     const username = 'ircuser';
     const text = 'Hello, @testuser and @anotheruser, was our meeting scheduled @5pm?';
     const expected = `**<${username}>** Hello, <@${testuser.id}> and <@${anotheruser.id}>,` +
-     ` was our meeting scheduled @5pm?`;
+     ' was our meeting scheduled @5pm?';
 
     this.bot.sendToDiscord(username, '#irc', text);
     DiscordStub.prototype.sendMessage.should.have.been.calledWith(discordChannel, expected);
