@@ -2,7 +2,7 @@
   {
     "nickname": "Discord",
     "server": "irc.coldfront.net",
-    "discordToken": "{{env 'DISCORD_TOKEN'}}",
+    "discordToken": "MTgwODk3NzA0NjM1OTI0NDgy.ChjAvg.4o0QOhx47QZccVfQdqJUVKekrgQ",
     "channelMapping": {
       "114786249750872069,#general": "#PeakOfSerenity",
       "117825034910695432,#general": "#TheBlackTemple",
@@ -19,7 +19,7 @@
   {
     "nickname": "Discord",
     "server": "irc.quakenet.org",
-    "discordToken": "{{env 'DISCORD_TOKEN'}}",
+    "discordToken": "MTgwODk3NzA0NjM1OTI0NDgy.ChjAvg.4o0QOhx47QZccVfQdqJUVKekrgQ",
     "channelMapping": {
       "122270271095832576,#alteredtime": "#alteredtime",
       "129594743393878017,#general": "#thrillofthehunt"
