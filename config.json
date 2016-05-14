@@ -4,8 +4,6 @@
     "server": "irc.coldfront.net",
     "discordToken": "{{env 'DISCORD_TOKEN'}}",
     "channelMapping": {
-      "PeakOfSerenity,#general": "#PeakOfSerenity",
-      "Acherus,#general": "#Acherus",
       "Mardum,#general": "#TheBlackTemple"
     },
     "ircOptions": {
