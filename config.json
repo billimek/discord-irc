@@ -4,7 +4,10 @@
     "server": "irc.coldfront.net",
     "discordToken": "{{env 'DISCORD_TOKEN'}}",
     "channelMapping": {
-      "Mardum,#general": "#TheBlackTemple"
+      "114786249750872069,#general": "#PeakOfSerenity",
+      "117825034910695432,#general": "#TheBlackTemple",
+      "181029260654411776,#general": "#discord-irc",
+      "118456785047781384,#general": "#H2P"
     },
     "ircOptions": {
       "debug": true,
@@ -12,5 +15,21 @@
       "autoRejoin": true,
       "autoConnect": true
     }
+  },
+  {
+    "nickname": "Discord",
+    "server": "irc.quakenet.org",
+    "discordToken": "{{env 'DISCORD_TOKEN'}}",
+    "channelMapping": {
+      "122270271095832576,#alteredtime": "#alteredtime",
+      "129594743393878017,#general": "#thrillofthehunt"
+    },
+    "ircOptions": {
+      "debug": true,
+      "showErrors": true,
+      "autoRejoin": true,
+      "autoConnect": true
+    },
+    "ircNickColor": false
   }
 ]

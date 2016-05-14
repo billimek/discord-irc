@@ -176,10 +176,11 @@ var Bot = function () {
 
       // Ignore PMs
       if (!message.channel.server) return;
-      var channelName = message.channel.server.name + ',#' + message.channel.name;
+      var channelName = message.channel.server.id + ',#' + message.channel.name;
 
       var ircChannel = this.channelMapping[channelName];
 
+      //"debug: Channel Mapping discord-irc,#general undefined"
       _winston2.default.debug('Channel Mapping', channelName, this.channelMapping[channelName]);
       if (ircChannel) {
         (function () {
@@ -223,7 +224,7 @@ var Bot = function () {
         // #channel -> channel before retrieving:
         var discordServerName = discordServerChannelName.split(',')[0];
         var discordChannelName = discordServerChannelName.split(',')[1].toLowerCase();
-        var discordChannel = this.discord.servers.get('name', discordServerName).channels.get('name', discordChannelName.slice(1));
+        var discordChannel = this.discord.servers.get('id', discordServerName).channels.get('name', discordChannelName.slice(1));
 
         if (!discordChannel) {
           _winston2.default.info('Tried to send a message to a channel the bot isn\'t in: ', discordChannelName);
