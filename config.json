@@ -6,8 +6,7 @@
     "channelMapping": {
       "PeakOfSerenity,#general": "#PeakOfSerenity",
       "Acherus,#general": "#Acherus",
-      "Mardum,#general": "#TheBlackTemple",
-      "HowToPriest,#general": "#H2P"
+      "Mardum,#general": "#TheBlackTemple"
     },
     "ircOptions": {
       "debug": true,
@@ -15,21 +14,5 @@
       "autoRejoin": true,
       "autoConnect": true
     }
-  },
-  {
-    "nickname": "Discord",
-    "server": "irc.quakenet.org",
-    "discordToken": "{{env 'DISCORD_TOKEN'}}",
-    "channelMapping": {
-      "Mages from World of Warcraft,#alteredtime": "#alteredtime",
-      "Thrill of the Hunt,#general": "#thrillofthehunt"
-    },
-    "ircOptions": {
-      "debug": true,
-      "showErrors": true,
-      "autoRejoin": true,
-      "autoConnect": true
-    },
-    "ircNickColor": false
   }
 ]
