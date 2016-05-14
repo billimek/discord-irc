@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "discord-irc-billimek",
-  "version": "0.8.2",
-=======
-  "name": "discord-irc",
   "version": "1.0.0",
->>>>>>> upstream/master
   "description": "Connects IRC and Discord channels by sending messages back and forth.",
   "keywords": [
     "discord",
