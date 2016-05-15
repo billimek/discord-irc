@@ -180,7 +180,6 @@ var Bot = function () {
 
       var ircChannel = this.channelMapping[channelName];
 
-      //"debug: Channel Mapping discord-irc,#general undefined"
       _winston2.default.debug('Channel Mapping', channelName, this.channelMapping[channelName]);
       if (ircChannel) {
         (function () {
@@ -222,24 +221,26 @@ var Bot = function () {
       var discordServerChannelName = this.invertedMapping[channel.toLowerCase()];
       if (discordServerChannelName) {
         // #channel -> channel before retrieving:
-        var discordServerName = discordServerChannelName.split(',')[0];
+        var discordServerID = discordServerChannelName.split(',')[0];
         var discordChannelName = discordServerChannelName.split(',')[1].toLowerCase();
-        var discordChannel = this.discord.servers.get('id', discordServerName).channels.get('name', discordChannelName.slice(1));
+        if (this.discord.servers.get('id', discordServerID)) {
+          var discordChannel = this.discord.servers.get('id', discordServerID).channels.get('name', discordChannelName.slice(1));
 
-        if (!discordChannel) {
-          _winston2.default.info('Tried to send a message to a channel the bot isn\'t in: ', discordChannelName);
-          return;
+          if (!discordChannel) {
+            _winston2.default.info('Tried to send a message to a channel the bot isn\'t in: ', discordChannelName);
+            return;
+          }
+
+          var withMentions = text.replace(/@[^\s]+\b/g, function (match) {
+            var user = _this5.discord.users.get('username', match.substring(1));
+            return user ? user.mention() : match;
+          });
+
+          // Add bold formatting:
+          var withAuthor = '**<' + author + '>** ' + withMentions;
+          _winston2.default.debug('Sending message to Discord', withAuthor, channel, '->', discordChannelName);
+          this.discord.sendMessage(discordChannel, withAuthor);
         }
-
-        var withMentions = text.replace(/@[^\s]+\b/g, function (match) {
-          var user = _this5.discord.users.get('username', match.substring(1));
-          return user ? user.mention() : match;
-        });
-
-        // Add bold formatting:
-        var withAuthor = '**<' + author + '>** ' + withMentions;
-        _winston2.default.debug('Sending message to Discord', withAuthor, channel, '->', discordChannelName);
-        this.discord.sendMessage(discordChannel, withAuthor);
       }
     }
   }]);
